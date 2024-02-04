@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article with Clickable Words</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+span.word {
+    cursor: pointer;
+    background-color: #e7f4ff;
+}
+</style>
+<script type="text/javascript">
+function wordClicked(word) {
+    alert("Word clicked: " + word);
+}
+</script>
+</head>
+<body>
+
+<p id="article">
+    <!-- 文本将通过JavaScript动态填充 -->
+</p>
+
+<script>
+// 示例文章文本
+const articleText = "This is an example article text where each word is clickable.";
+
+// 将文本转换为单词数组
+const words = articleText.split(/\s+/);
+
+// 创建一个span元素来包围每个单词，并设置点击事件
+const articleHTML = words.map(word => `<span class="word" onclick="wordClicked('${word.replace(/'/g, "\\'")}')">${word}</span>`).join(' ');
+
+// 将生成的HTML设置到文章段落中
+document.getElementById('article').innerHTML = articleHTML;
+</script>
+
+</body>
+</html>
